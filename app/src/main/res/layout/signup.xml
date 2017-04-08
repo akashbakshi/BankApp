@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Violet_Blue"
+    android:background="@color/Malibu"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/Violet_Blue"
+        android:background="@color/Malibu"
         android:text="Sign Up"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
@@ -46,24 +46,26 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="17dp"
+            android:backgroundTint="@color/Jackson_Purple"
             android:ems="10"
             android:hint="First Name"
             android:inputType="textPersonName"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimary"
             android:textSize="18dp"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <EditText
             android:id="@+id/tvLastName"
-            android:layout_width="344dp"
+            android:layout_width="341dp"
             android:layout_height="42dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/Jackson_Purple"
             android:ems="10"
             android:hint="Last Name"
             android:inputType="textPersonName"
@@ -73,24 +75,28 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvFIrstName"
-            tools:layout_editor_absoluteX="20dp"
-            tools:layout_editor_absoluteY="104dp" />
+            tools:layout_editor_absoluteX="21dp"
+            tools:layout_editor_absoluteY="124dp" />
 
         <EditText
             android:id="@+id/phoneNum"
-            android:layout_width="345dp"
-            android:layout_height="44dp"
+            android:layout_width="343dp"
+            android:layout_height="42dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/Jackson_Purple"
             android:ems="10"
             android:hint="Phone Number"
             android:inputType="phone"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimary"
+            app:layout_constraintHorizontal_bias="0.347"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
+            app:layout_constraintTop_toBottomOf="@+id/tvLastName"
+            tools:layout_editor_absoluteX="18dp"
+            tools:layout_editor_absoluteY="176dp" />
 
         <EditText
             android:id="@+id/tvEmail"
@@ -99,6 +105,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/Jackson_Purple"
             android:ems="10"
             android:hint="E-Mail Address"
             android:inputType="textEmailAddress"
@@ -115,6 +122,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/Jackson_Purple"
             android:ems="10"
             android:hint="Opening Balance"
             android:inputType="number"
@@ -129,12 +137,14 @@
             android:layout_width="339dp"
             android:layout_height="39dp"
             android:layout_marginTop="14dp"
-            android:gravity="right"
+            android:gravity="end"
             android:orientation="horizontal"
             android:weightSum="1"
             app:layout_constraintTop_toBottomOf="@+id/tvOpening"
-            tools:layout_editor_absoluteX="12dp"
-            tools:layout_editor_absoluteY="331dp">
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent">
 
             <RadioButton
                 android:id="@+id/rbChequings"
@@ -142,7 +152,9 @@
                 android:layout_height="39dp"
                 android:layout_weight="0.53"
                 android:text="Chequings"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textColorLink="@color/Jackson_Purple"
+                app:buttonTint="@color/Jackson_Purple" />
 
             <RadioButton
                 android:id="@+id/rbSavings"
@@ -150,8 +162,57 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.44"
                 android:text="Savings"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textColorLink="@color/Jackson_Purple"
+                app:buttonTint="@color/Jackson_Purple" />
         </RadioGroup>
+
+        <EditText
+            android:id="@+id/tfWC1"
+            android:layout_width="343dp"
+            android:layout_height="49dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/Jackson_Purple"
+            android:ems="10"
+            android:inputType="textPersonName|number"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btngAccType" />
+
+        <EditText
+            android:id="@+id/tfWC2"
+            android:layout_width="343dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/Jackson_Purple"
+            android:ems="10"
+            android:inputType="textPersonName|number"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfWC1" />
+
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="111dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/Jackson_Purple"
+            android:text="Create"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfWC2" />
 
     </android.support.constraint.ConstraintLayout>
 
