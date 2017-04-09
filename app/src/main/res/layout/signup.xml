@@ -24,7 +24,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvAccNumber"
             android:layout_width="370dp"
             android:layout_height="23dp"
             android:layout_marginLeft="8dp"
@@ -56,7 +56,7 @@
             app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAccNumber" />
 
         <EditText
             android:id="@+id/tvLastName"
@@ -80,8 +80,8 @@
 
         <EditText
             android:id="@+id/phoneNum"
-            android:layout_width="343dp"
-            android:layout_height="42dp"
+            android:layout_width="337dp"
+            android:layout_height="43dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
@@ -95,8 +95,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvLastName"
-            tools:layout_editor_absoluteX="18dp"
-            tools:layout_editor_absoluteY="176dp" />
+            tools:layout_editor_absoluteX="23dp"
+            tools:layout_editor_absoluteY="173dp" />
 
         <EditText
             android:id="@+id/tvEmail"
