@@ -103,8 +103,7 @@ public class SignUp extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        BankAccount acc = null;
-                        acc.accNum = MainActivity.accNumber;
+                        BankAccount acc = new Chequing(0.0);
                         String fName = tfFirstName.getText().toString();
                         String lName = tfLastName.getText().toString();
 
@@ -115,6 +114,7 @@ public class SignUp extends AppCompatActivity {
                             Double fee = Double.parseDouble(tfWildcard.getText().toString());
 
                             acc = new Chequing(fee);
+                            acc.accNum = MainActivity.accNumber;
                             acc.accHolder = new Person(fName,lName,email,pNum);
                             acc.balance = balance;
                             MainActivity.accounts.add(acc);
@@ -125,11 +125,13 @@ public class SignUp extends AppCompatActivity {
                             Double interestRate = Double.parseDouble(tfWildcard2.getText().toString());
 
                             acc = new Savings(minBal,interestRate);
+                            acc.accNum = MainActivity.accNumber;
                             acc.balance = balance;
                             acc.accHolder = new Person(fName,lName,email,pNum);
                             MainActivity.accounts.add(acc);
                         }
                         MainActivity.accNumber++;
+                        MainActivity.numAccounts++;
                         finish();
                     }
                 }

@@ -202,12 +202,12 @@
 
         <Button
             android:id="@+id/btnCreate"
-            android:layout_width="111dp"
-            android:layout_height="42dp"
+            android:layout_width="105dp"
+            android:layout_height="45dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:background="@color/Jackson_Purple"
+            android:background="@drawable/rounded_edges"
             android:text="Create"
             android:textColor="@color/colorPrimary"
             app:layout_constraintLeft_toLeftOf="parent"
