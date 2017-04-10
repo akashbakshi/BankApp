@@ -11,6 +11,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
 /**
@@ -36,10 +42,9 @@ public class SignUp extends AppCompatActivity {
     private int accSel = -1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(final Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
-
 
         tfFirstName = (EditText)findViewById(R.id.tvFIrstName);
         tfLastName = (EditText)findViewById(R.id.tvLastName);
@@ -62,6 +67,10 @@ public class SignUp extends AppCompatActivity {
         accountNumber.setText("Account Number: "+MainActivity.accNumber);
 
         btnCreate = (Button)findViewById(R.id.btnCreate);
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef =database.getInstance().getReference();
 
         rbCheq.setOnClickListener(
                 new View.OnClickListener() {
@@ -107,6 +116,7 @@ public class SignUp extends AppCompatActivity {
                         String fName = tfFirstName.getText().toString();
                         String lName = tfLastName.getText().toString();
 
+
                         long pNum = Long.parseLong(tfPhoneNum.getText().toString());
                         String email = tfEmail.getText().toString();
                         Double balance = Double.parseDouble(tfOpeningBal.getText().toString());
@@ -119,6 +129,14 @@ public class SignUp extends AppCompatActivity {
                             acc.balance = balance;
                             MainActivity.accounts.add(acc);
 
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("AccType").setValue("c");
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("FirstName").setValue(fName);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("LastName").setValue(lName);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("PhoneNumber").setValue(pNum);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Email").setValue(email);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Balance").setValue(balance);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Fee").setValue(fee);
+
                         }
                         else if (accSel == 1){
                             Double minBal = Double.parseDouble(tfWildcard.getText().toString());
@@ -129,12 +147,25 @@ public class SignUp extends AppCompatActivity {
                             acc.balance = balance;
                             acc.accHolder = new Person(fName,lName,email,pNum);
                             MainActivity.accounts.add(acc);
+
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("AccType").setValue("s");
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("FirstName").setValue(fName);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("LastName").setValue(lName);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("PhoneNumber").setValue(pNum);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Email").setValue(email);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Balance").setValue(balance);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("MinBalance").setValue(minBal);
+                            myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("InterestRate").setValue(interestRate);
                         }
+
                         MainActivity.accNumber++;
                         MainActivity.numAccounts++;
                         finish();
+
                     }
                 }
         );
+
+
     }
 }
