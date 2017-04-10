@@ -46,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
                         int accInd = findAccount(Integer.parseInt(tfAccNum.getText().toString()));
 
                         if(accInd != -1){
-                            Toast t = Toast.makeText(getApplicationContext(),accounts.get(accInd).accHolder.toString(),Toast.LENGTH_LONG);
+                            Intent Dashboardintent = new Intent(MainActivity.this,Dashboard.class);
+                            Dashboardintent.putExtra("Account Index",accInd);
+                            startActivity(Dashboardintent);
+                        }
+                        else{
+                            Toast t = Toast.makeText(getApplicationContext(),"No Account Found!",Toast.LENGTH_LONG);
                             t.show();
                         }
 
@@ -59,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
         int index = -1;
 
         for (int i =0;i<(numAccounts);i++){
-            Log.d("acc entered",Integer.toString(acc));
-            Log.d("acc found",Integer.toString(accounts.get(i).accNum));
             if(acc == accounts.get(i).accNum)
                 index = i;
         }

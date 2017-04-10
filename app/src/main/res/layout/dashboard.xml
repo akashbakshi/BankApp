@@ -11,32 +11,33 @@
         android:id="@+id/tvWelcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textColor="@color/colorPrimary"
+        android:text="Overview"
         android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
         android:textSize="24dp" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/accountList"
-            android:layout_width="160dp"
+            android:layout_width="163dp"
             android:layout_height="28dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="29dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginTop="29dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tfFName"
-            android:layout_width="161dp"
-            android:layout_height="27dp"
+            android:layout_width="163dp"
+            android:layout_height="26dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="18dp"
@@ -46,7 +47,220 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accountList" />
+            app:layout_constraintTop_toBottomOf="@+id/accountList"
+            tools:layout_editor_absoluteY="76dp" />
+
+        <TextView
+            android:id="@+id/tfLName"
+            android:layout_width="163dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="19dp"
+            android:text="Last Name:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfFName" />
+
+        <TextView
+            android:id="@+id/tfPhoneNum"
+            android:layout_width="163dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="19dp"
+            android:text="Phone Number: "
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfLName" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="163dp"
+            android:layout_height="26dp"
+            android:text="E-Mail:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:layout_marginTop="17dp"
+            app:layout_constraintTop_toBottomOf="@+id/tfPhoneNum"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="163dp"
+            android:layout_height="28dp"
+            android:text="Balance:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:layout_marginTop="13dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tfBal"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <Button
+            android:id="@+id/btnRunMonthly"
+            android:layout_width="163dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edges"
+            android:text="Monthly Run"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="69dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnWithdraw"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.502" />
+
+        <Button
+            android:id="@+id/btnWithdraw"
+            android:layout_width="163dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edges"
+            android:text="Withdraw"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginRight="7dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/tfWidthdrawAmnt" />
+
+        <Button
+            android:id="@+id/btnDeposit"
+            android:layout_width="163dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edges"
+            android:text="Deposit"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/tfDepositAmnt"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btnWithdraw"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <EditText
+            android:id="@+id/tfWidthdrawAmnt"
+            android:layout_width="131dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="23dp"
+            android:ems="10"
+            android:hint="Enter Amount"
+            android:inputType="number"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@android:color/background_light"
+            android:textSize="16dp"
+            app:layout_constraintHorizontal_bias="0.79"
+            app:layout_constraintLeft_toRightOf="@+id/tfDepositAmnt"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfBal" />
+
+        <EditText
+            android:id="@+id/tfDepositAmnt"
+            android:layout_width="131dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="23dp"
+            android:ems="10"
+            android:hint="Enter Amount"
+            android:inputType="number"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@android:color/background_light"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/tfFirName"
+            android:layout_width="120dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="75dp"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toRightOf="@+id/tfFName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tfLastName"
+            android:layout_width="120dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="17dp"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            app:layout_constraintHorizontal_bias="0.896"
+            app:layout_constraintLeft_toRightOf="@+id/tfLName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfFirName" />
+
+        <TextView
+            android:id="@+id/tfPhone"
+            android:layout_width="120dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="77dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="17dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/tfPhoneNum"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfLastName" />
+
+        <TextView
+            android:id="@+id/tfBal"
+            android:layout_width="120dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="13dp"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            app:layout_constraintHorizontal_bias="0.896"
+            app:layout_constraintLeft_toRightOf="@+id/textView5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfEmail" />
+
+        <TextView
+            android:id="@+id/tfEmail"
+            android:layout_width="137dp"
+            android:layout_height="27dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="13dp"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12dp"
+            app:layout_constraintHorizontal_bias="0.896"
+            app:layout_constraintLeft_toRightOf="@+id/textView5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfPhone"
+            tools:layout_editor_absoluteX="231dp"
+            tools:layout_editor_absoluteY="207dp" />
 
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

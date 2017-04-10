@@ -17,10 +17,21 @@ public class Person {
         phoneNum = pNum;
     }
 
-    public String toString(){
+    public String getFirstName(){
 
-        return firstName+" "+lastName+" "+email+" "+phoneNum;
+        return firstName;
     }
 
+    public String getLastName(){
+        return lastName;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public String getPhoneNum(){
+        return Long.toString(phoneNum);
+    }
 
 }

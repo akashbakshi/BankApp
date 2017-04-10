@@ -22,7 +22,7 @@ public class Savings extends BankAccount {
             enough = false;
 
         else
-            balance *= interestRate;
+            balance += (balance *interestRate);
 
         return enough;
     }
