@@ -127,13 +127,13 @@ public class SignUp extends AppCompatActivity {
                             acc.balance = balance;
                             MainActivity.accounts.add(acc);
 
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("AccType").setValue("c");
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("FirstName").setValue(fName);
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("LastName").setValue(lName);
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("PhoneNumber").setValue(Long.toString(pNum));
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Email").setValue(email);
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Balance").setValue(balance);
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Fee").setValue(Double.toString(fee));
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("AccType").setValue("c");
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("FirstName").setValue(fName);
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("LastName").setValue(lName);
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("PhoneNumber").setValue(Long.toString(pNum));
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("Email").setValue(email);
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("Balance").setValue(Double.toString(balance));
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("Fee").setValue(Double.toString(fee));
 
                         }
                         else if (accSel == 1){
@@ -146,14 +146,14 @@ public class SignUp extends AppCompatActivity {
                             acc.accHolder = new Person(fName,lName,email,pNum);
                             MainActivity.accounts.add(acc);
 
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("AccType").setValue("s");
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("FirstName").setValue(fName);
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("LastName").setValue(lName);
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("PhoneNumber").setValue(Long.toString(pNum));
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Email").setValue(email);
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("Balance").setValue(Double.toString(balance));
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("MinBalance").setValue(Double.toString(minBal));
-                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").push().child("InterestRate").setValue(Double.toString(interestRate));
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("AccType").setValue("s");
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("FirstName").setValue(fName);
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("LastName").setValue(lName);
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("PhoneNumber").setValue(Long.toString(pNum));
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("Email").setValue(email);
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("Balance").setValue(Double.toString(balance));
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("MinBalance").setValue(Double.toString(minBal));
+                            MainActivity.myRef.child("Users").child(Integer.toString(acc.accNum)).child("details").child("InterestRate").setValue(Double.toString(interestRate));
                         }
 
                         MainActivity.accNumber++;
