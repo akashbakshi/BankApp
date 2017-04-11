@@ -30,29 +30,27 @@ public class MainActivity extends AppCompatActivity {
 
     public static FirebaseDatabase database = FirebaseDatabase.getInstance();
     public static final DatabaseReference myRef = database.getInstance().getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        database.getReference("Users").keepSynced(true);
         tfAccNum = (EditText)findViewById(R.id.tfAcc);
         signUp = (Button)findViewById(R.id.btnSignUp);
         signIn = (Button)findViewById(R.id.btnSignIn);
-
 
         MainActivity.myRef.addValueEventListener(
                 new ValueEventListener() {
 
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Log.d("test","123");
                         numAccounts = Integer.parseInt(dataSnapshot.child("numberAccount").getValue().toString());
-                        DataSnapshot userinfo = dataSnapshot.child("Users").child("1000").child("details");
-                        Log.d("value",userinfo.child("AccType").toString());
                         generateAccountsFromDb(numAccounts,dataSnapshot);
-                        accNumber+=numAccounts;
-                    }
+                        Log.d("numacc",Integer.toString(numAccounts));
+
+                }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -60,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
 
         signUp.setOnClickListener(
                 new View.OnClickListener() {
@@ -91,41 +90,74 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        accNumber+=numAccounts;
     }
 
-    private void generateAccountsFromDb(int accInd,DataSnapshot data){
+    private void generateAccountsFromDb(int accInd, final DataSnapshot data){
+        Log.d("numacc",Integer.toString(numAccounts));
+        for(int i =0;i<numAccounts;i++){
 
-        for(int i =0;i<accInd;i++){
-            BankAccount acc = null;
             accNumber+=i;
+            Log.d("numacc",Integer.toString(accNumber));
+            DatabaseReference userinfo = myRef.child("Users").child(Integer.toString(accNumber)).child("details");
+            userinfo.addValueEventListener(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                             BankAccount acc = new Chequing(0.0);
+                            String type = null,first = null,last= null,phone= null,email= null,bal = null,fee= null,minBal = null,intRate = null;
+                            for (DataSnapshot details : dataSnapshot.getChildren()) {
+                                 type = details.child("AccType").getValue(String.class);
+                                 first = details.child("FirstName").getValue(String.class);
+                                 last = details.child("LastName").getValue(String.class);
+                                 phone = details.child("PhoneNumber").getValue(String.class);
+                                 email = details.child("Email").getValue(String.class);
+                                 bal = details.child("Balance").getValue(String.class);
 
-            String type = data.child("Users").child("1000").child("details").child("AccType").getValue().toString();
-            Log.d("acctype",type);
-            String first = data.child("Users").child(Integer.toString(acc.accNum)).child("details").child("FirstName").getValue().toString();
-            String last = data.child("Users").child(Integer.toString(accNumber)).child("details").child("LastName").getValue().toString();
-            long Phone = Long.parseLong(data.child("Users").child(Integer.toString(accNumber)).child("details").child("PhoneNumber").getValue().toString());
-            String email = data.child("Users").child(Integer.toString(accNumber)).child("details").child("Email").getValue().toString();
-            double Bal = Double.parseDouble(data.child("Users").child(Integer.toString(accNumber)).child("details").child("Balance").getValue().toString());
+                            }
+                            // type being set to null
+                            type = dataSnapshot.child("AccType").getValue(String.class);
+                            Log.d("acct",type);
+                            if(type.equals("s"))
+                            {
+                                Log.d("types","sav");
+                                minBal = dataSnapshot.child("MinBalance").getValue(String.class);
+                                intRate = dataSnapshot.child("InterestRate").getValue(String.class);
+                            }
+                            if (type.equals("c")) {
+                                Log.d("types","chq");
+                                fee = dataSnapshot.child("Fee").getValue(String.class);
+                                System.out.print(fee);
+                            }
+                            if(type.equals("s")){
+                                Log.d("types","sav2");
+                                acc = new Savings(Double.parseDouble(minBal),Double.parseDouble(intRate));
+                                acc.accNum = accNumber;
+                                acc.balance = Double.parseDouble(bal);
+                                acc.accHolder = new Person(first,last,email,Long.parseLong(phone));
+                                accounts.add(acc);
+                            }else if (type.equals("c")){
+                                Log.d("types","chq1");
+                                acc = new Chequing(Double.parseDouble(fee));
+                                acc.accNum = accNumber;
+                                acc.balance = Double.parseDouble(bal);
+                                acc.accHolder = new Person(first,last,email,Long.parseLong(phone));
+                                accounts.add(acc);
+                            }
+                        }
 
-            if(type == "s") {
-                double minBal = Double.parseDouble(data.child("Users").child(Integer.toString(accNumber)).child("details").child("MinBalance").getValue().toString());
-                double interestRate = Double.parseDouble(data.child("Users").child(Integer.toString(accNumber)).child("details").child("InterestRate").getValue().toString());
-                acc = new Savings(minBal,interestRate);
-                acc.accNum = accNumber;
-                acc.balance = Bal;
-                acc.accHolder = new Person(first,last,email,Phone);
-                accounts.add(acc);
-            }
-            else if (type == "c"){
-                double fee = Double.parseDouble(data.child("Users").child(Integer.toString(accNumber)).child("details").child("Fee").getValue().toString());
-                acc = new Chequing(fee);
-                acc.accNum = accNumber;
-                acc.balance = Bal;
-                acc.accHolder = new Person(first,last,email,Phone);
-                accounts.add(acc);
-            }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    }
+            );
+
         }
-    }
+
+        }
+
     private int findAccount(int acc){
         int index = -1;
 
