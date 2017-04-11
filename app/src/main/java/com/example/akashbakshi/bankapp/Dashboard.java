@@ -40,6 +40,7 @@ public class Dashboard extends AppCompatActivity{
         btnMonthly = (Button)findViewById(R.id.btnRunMonthly);
         btnWithdraw = (Button)findViewById(R.id.btnWithdraw);
 
+        final int accNum = MainActivity.accounts.get(acc).accNum;
         firstName.setText(MainActivity.accounts.get(acc).accHolder.getFirstName().toString());
         lastName.setText(MainActivity.accounts.get(acc).accHolder.getLastName().toString());
         phoneNum.setText(MainActivity.accounts.get(acc).accHolder.getPhoneNum().toString());
@@ -55,6 +56,7 @@ public class Dashboard extends AppCompatActivity{
                     public void onClick(View v) {
                         MainActivity.accounts.get(acc).balance += Integer.parseInt(deposit.getText().toString());
                         bal.setText(MainActivity.accounts.get(acc).balance.toString().toString());
+                        MainActivity.myRef.child("Users").child(Integer.toString(accNum)).child("details").child("Balance").setValue(Double.toString(MainActivity.accounts.get(acc).balance));
                         deposit.setText(null);
                     }
                 }
@@ -68,6 +70,7 @@ public class Dashboard extends AppCompatActivity{
                         if(amnt<=MainActivity.accounts.get(acc).balance){
                             MainActivity.accounts.get(acc).balance -= amnt;
                             bal.setText(MainActivity.accounts.get(acc).balance.toString().toString());
+                            MainActivity.myRef.child("Users").child(Integer.toString(accNum)).child("details").child("Balance").setValue(Double.toString(MainActivity.accounts.get(acc).balance));
                             withdraw.setText(null);
 
                         }else{
@@ -87,8 +90,10 @@ public class Dashboard extends AppCompatActivity{
                         {
                             Toast t = Toast.makeText(getApplicationContext(),"Not Enough Funds to run monthly update",Toast.LENGTH_LONG);
                             t.show();
+                        }else{
+                            bal.setText(MainActivity.accounts.get(acc).balance.toString().toString());
+                            MainActivity.myRef.child("Users").child(Integer.toString(accNum)).child("details").child("Balance").setValue(Double.toString(MainActivity.accounts.get(acc).balance));
                         }
-                        bal.setText(MainActivity.accounts.get(acc).balance.toString().toString());
 
                     }
                 }
